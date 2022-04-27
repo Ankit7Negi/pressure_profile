@@ -1,0 +1,23 @@
+import matplotlib.pyplot as plt
+import numpy as np
+def pressureprof():
+re = float(input('Outer radius of Reservoir(ft): '))
+rw = float(input('We4llbore Radius(ft): '))
+Pwf = float(input('Bottomhole Pressure(PSI): '))
+h = float(input('Net Pay Thickness(ft): '))
+k = float(input('Average Reservoir Permeability(mD): '))
+q = float(input('Flowrate(STB/Day): '))
+mu = float(input('Oil Viscosity: '))
+B = 1
+r = np.linspace(rw,re,500)
+Pressure = []
+for i in range(len(r)):
+P = Pwf + (141.2*q*mu*B*(np.log(r[i]/rw))/k/h)
+Pressure.append(P)
+plt.figure(figsize = [8,6])
+plt.plot(r,Pressure)
+plt.xlabel('r(ft)')
+plt.ylabel('P(r), Psi')
+plt.title('Reservoir Pressure Profile')
+plt.grid(True)
+print(pressureprof())
